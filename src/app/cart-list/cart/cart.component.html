@@ -1,0 +1,24 @@
+<table class="table table-striped table-dark">
+  <thead>
+  <tr>
+    <th *ngFor="let column of cartColumns">
+      {{column.title}}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of cartList; let idx = index">
+    <td>{{product.id}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.description}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.category}}</td>
+    <td>
+      <ng-container *ngFor="let type of product.types; let lastOwner = last">
+        {{type}}<span *ngIf="!lastOwner">,&nbsp;</span>
+      </ng-container>
+    </td>
+    <td>{{product.isAvailable}}</td>
+  </tr>
+  </tbody>
+</table>

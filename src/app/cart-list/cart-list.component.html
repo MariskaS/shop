@@ -1,0 +1,10 @@
+<h3>
+  Your Shopping Cart
+  <small class="text-muted">{{cartList.length}}&nbsp;item(s)</small>
+</h3>
+
+<app-cart [cartList]="cartList"
+               *ngIf="cartList.length > 0; else messageBlock"></app-cart>
+<ng-template #messageBlock>
+  <div class="alert alert-warning">Your basket is empty.</div>
+</ng-template>
