@@ -1,24 +1,37 @@
-<table class="table table-striped table-dark">
+<table class="table table-striped">
   <thead>
   <tr>
     <th *ngFor="let column of cartColumns">
       {{column.title}}
     </th>
+    <th>Actions</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of cartList; let idx = index">
-    <td>{{product.id}}</td>
-    <td>{{product.name}}</td>
-    <td>{{product.description}}</td>
-    <td>{{product.price}}</td>
-    <td>{{product.category}}</td>
+  <tr [appHighlight]="'#fff3cd'" *ngFor="let item of cartList; let idx = index">
+    <td>{{item.product.id}}</td>
+    <td>{{item.product.name}}</td>
+    <td>{{item.product.description}}</td>
+    <td>{{item.product.price}}</td>
     <td>
-      <ng-container *ngFor="let type of product.types; let lastOwner = last">
+      <input type="number"
+             class="form-control u-width-90"
+             min="1"
+             [(ngModel)]="item.quantity">
+    </td>
+    <td>{{item.product.category}}</td>
+    <td>
+      <ng-container *ngFor="let type of item.product.types; let lastOwner = last">
         {{type}}<span *ngIf="!lastOwner">,&nbsp;</span>
       </ng-container>
     </td>
-    <td>{{product.isAvailable}}</td>
+    <td style="width: 90px"
+        class="text-right">
+      <button type="button"
+              class="btn btn-outline-primary btn-sm"
+              (click)="onRemove(idx)">Remove
+      </button>
+    </td>
   </tr>
   </tbody>
 </table>

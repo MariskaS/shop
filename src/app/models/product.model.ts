@@ -1,6 +1,6 @@
-import { Product } from '../core/Product';
-import { Categories } from '../core/CategoriesEnum';
-import { Types } from '../core/TypesEnum';
+import { Categories } from '../product-list/CategoriesEnum';
+import { Types } from '../product-list/TypesEnum';
+import { Product } from '../core/interfaces/Product';
 
 export class ProductModel implements Product {
   constructor(public id: string,
@@ -8,8 +8,8 @@ export class ProductModel implements Product {
               public description: string,
               public price: number,
               public category: Categories,
-              public types: Types[],
-              public isAvailable: boolean) {
+              public isAvailable: boolean,
+              public types?: Types[]) {
   }
 }
 

@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Task2] - 2018-07-11
+### Added
+- CartModule, ProductsModule, CoreModule, SharedModule
+- HighlightDirective (add color for row by hover)
+- CartComponent: added logic to show/change quantity of added product and logic for remove product - onRemove()
+- ProductComponent: added directive ngClass for add class to isAvailable text ('red' - if false and 'green' - if true)
+- ProductComponent: disable button 'Buy' if product no isAvailable
+- HeaderComponent: added to CoreModule for future modifications
+
+### Changed
+- ProductListComponent: delegated the display of the list of products to ProductComponent
+- ProductComponent: move method onBuy() to ProductListComponent
+
+
 ## [Task1] - 2018-07-06
 ### Added
 
@@ -37,3 +51,4 @@ Functionality for table:
   created an array of objects that contains a pair - a key and a value
   
 [Task1]: https://github.com/MariskaS/shop/commits/Task1
+[Task2]: https://github.com/MariskaS/shop/commits/Task2

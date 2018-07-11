@@ -1,3 +1,4 @@
 <h3>Products</h3>
-<app-product></app-product>
+<app-product [products]="products"
+             (buy)="onBuy($event)"></app-product>
 

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { CartService } from './cart.service';
-import { ProductModel } from '../models/product.model';
-
+import { CartItem } from '../core/interfaces/CartItem';
 
 @Component({
   selector: 'app-cart-list',
@@ -10,7 +9,8 @@ import { ProductModel } from '../models/product.model';
   styleUrls: ['./cart-list.component.css']
 })
 export class CartListComponent implements OnInit {
-  cartList: Array<ProductModel>;
+  @Output() removeProduct: EventEmitter<any> = new EventEmitter<any>();
+  cartList: Array<CartItem>;
 
   constructor(private cartService: CartService) {
   }
@@ -18,4 +18,14 @@ export class CartListComponent implements OnInit {
   ngOnInit() {
     this.cartList = this.cartService.getCartItems();
   }
+
+  onRemove(data) {
+    this.removeProduct.emit(data);
+    this.cartList.splice(data, 1);
+  }
+
+  // TODO: show sum of Product
+  // getCartItemsPrice(): number {
+  //   return this.cartService.getCartItemsPrice();
+  // }
 }

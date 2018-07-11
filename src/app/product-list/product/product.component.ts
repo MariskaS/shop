@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 
 import { ProductModel } from '../../models/product.model';
-import { ProductsService } from '../products.service';
-import { CartService } from '../../cart-list/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -10,8 +8,10 @@ import { CartService } from '../../cart-list/cart.service';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  products: Array<ProductModel>;
+  @Output() buy: EventEmitter<any> = new EventEmitter<any>();
+  @Input() products: Array<ProductModel>;
 
+  // TODO - issues/1
   productColumns = [
     {key: 'id', title: 'ID'},
     {key: 'name', title: 'Name'},
@@ -22,12 +22,10 @@ export class ProductComponent implements OnInit {
     {key: 'isAvailable', title: 'isAvailable'},
   ];
 
-  constructor(private productsService: ProductsService,
-              private cartService: CartService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.products = this.productsService.getProducts();
   }
 
   /**
@@ -35,9 +33,8 @@ export class ProductComponent implements OnInit {
    * @param product
    */
   onBuy(product): void {
-
-    this.cartService.addItem(product.id);
-    console.log('product ' + product.name + ' added to cart');
+    this.buy.emit(product.id);
   }
 
 }
+

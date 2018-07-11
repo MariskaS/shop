@@ -2,29 +2,29 @@ import { Injectable } from '@angular/core';
 
 import { ProductModel } from '../models/product.model';
 
-import { Categories } from '../core/CategoriesEnum';
-import { Types } from '../core/TypesEnum';
+import { Categories } from './CategoriesEnum';
+import { Types } from './TypesEnum';
 
 @Injectable()
 export class ProductsService {
   private products: Array<ProductModel> = [
-    new ProductModel(
-      '1',
-      'Name 1',
-      'Description',
-      452,
-      Categories.Category1,
-      [Types.Type1, Types.Type4],
-      false
-    ),
     new ProductModel(
       '2',
       'Name 2',
       'Description',
       34,
       Categories.Category2,
-      [Types.Type1, Types.Type4],
-      false
+      false,
+      [Types.Type1, Types.Type4]
+    ),
+    new ProductModel(
+      '1',
+      'Name 1',
+      'Description',
+      452,
+      Categories.Category1,
+      false,
+      [Types.Type1, Types.Type4]
     ),
     new ProductModel(
       '3',
@@ -32,8 +32,8 @@ export class ProductsService {
       'Description',
       56,
       Categories.Category3,
-      [Types.Type1, Types.Type2, Types.Type3],
-      true
+      true,
+      [Types.Type1, Types.Type2, Types.Type3]
     ),
     new ProductModel(
       '4',
@@ -41,8 +41,8 @@ export class ProductsService {
       'Description',
       45,
       Categories.Category4,
-      [Types.Type1, Types.Type3],
-      true
+      true,
+      [Types.Type1, Types.Type3]
     ),
     new ProductModel(
       '5',
@@ -50,8 +50,8 @@ export class ProductsService {
       'Description',
       88,
       Categories.Category4,
-      [Types.Type1, Types.Type2, Types.Type3, Types.Type4],
-      true
+      true,
+      [Types.Type1, Types.Type2, Types.Type3, Types.Type4]
     ),
   ];
 
